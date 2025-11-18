@@ -1,0 +1,2709 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GlobalMart - Your Premium Shopping Destination</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #4a6bff;
+            --secondary-color: #ff6b6b;
+            --dark-color: #2c3e50;
+            --light-color: #f8f9fa;
+            --success-color: #28a745;
+            --warning-color: #ffc107;
+            --danger-color: #dc3545;
+            --info-color: #17a2b8;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f5f7fa;
+            color: #333;
+        }
+        
+        /* Header Styles */
+        .top-bar {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 8px 0;
+            font-size: 14px;
+        }
+        
+        .main-header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+        
+        .search-container {
+            position: relative;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .search-input {
+            width: 100%;
+            padding: 12px 50px 12px 20px;
+            border: 2px solid #e1e5eb;
+            border-radius: 50px;
+            font-size: 15px;
+            transition: all 0.3s;
+        }
+        
+        .search-input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(74, 107, 255, 0.1);
+        }
+        
+        .search-btn, .voice-search-btn, .image-search-btn {
+            position: absolute;
+            border: none;
+            background: none;
+            color: #6c757d;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        
+        .search-btn {
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        
+        .voice-search-btn {
+            right: 50px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        
+        .image-search-btn {
+            right: 85px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        
+        .search-btn:hover, .voice-search-btn:hover, .image-search-btn:hover {
+            color: var(--primary-color);
+        }
+        
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .action-btn {
+            position: relative;
+            background: none;
+            border: none;
+            font-size: 20px;
+            color: var(--dark-color);
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        
+        .action-btn:hover {
+            color: var(--primary-color);
+        }
+        
+        .badge-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: var(--danger-color);
+            color: white;
+            font-size: 10px;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        /* Navigation */
+        .main-nav {
+            background-color: white;
+            border-top: 1px solid #e1e5eb;
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .nav-item {
+            position: relative;
+        }
+        
+        .nav-link {
+            display: block;
+            padding: 15px 20px;
+            color: var(--dark-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+        
+        .nav-link:hover {
+            color: var(--primary-color);
+            background-color: rgba(74, 107, 255, 0.05);
+        }
+        
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 80px 0;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero-title {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            animation: fadeInUp 0.8s ease;
+        }
+        
+        .hero-subtitle {
+            font-size: 20px;
+            margin-bottom: 30px;
+            opacity: 0.9;
+            animation: fadeInUp 0.8s ease 0.2s both;
+        }
+        
+        .hero-btn {
+            padding: 12px 30px;
+            font-size: 16px;
+            font-weight: 600;
+            border: none;
+            border-radius: 50px;
+            background-color: white;
+            color: var(--primary-color);
+            cursor: pointer;
+            transition: all 0.3s;
+            animation: fadeInUp 0.8s ease 0.4s both;
+        }
+        
+        .hero-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Categories */
+        .categories-section {
+            padding: 60px 0;
+        }
+        
+        .section-title {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 40px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary-color);
+            border-radius: 2px;
+        }
+        
+        .category-card {
+            background-color: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s;
+            text-align: center;
+            padding: 30px 20px;
+            cursor: pointer;
+        }
+        
+        .category-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .category-icon {
+            font-size: 48px;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+        
+        .category-name {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .category-count {
+            color: #6c757d;
+            font-size: 14px;
+        }
+        
+        /* Products */
+        .products-section {
+            padding: 60px 0;
+            background-color: white;
+        }
+        
+        .product-card {
+            background-color: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s;
+            position: relative;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .product-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background-color: var(--danger-color);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 50px;
+            font-size: 12px;
+            font-weight: 600;
+            z-index: 1;
+        }
+        
+        .product-img {
+            height: 250px;
+            object-fit: cover;
+            width: 100%;
+            transition: transform 0.5s;
+        }
+        
+        .product-card:hover .product-img {
+            transform: scale(1.05);
+        }
+        
+        .product-body {
+            padding: 20px;
+        }
+        
+        .product-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            height: 50px;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+        }
+        
+        .product-rating {
+            color: var(--warning-color);
+            margin-bottom: 10px;
+        }
+        
+        .product-price {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .current-price {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+        
+        .old-price {
+            font-size: 16px;
+            color: #6c757d;
+            text-decoration: line-through;
+        }
+        
+        .product-actions {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .btn-product {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .btn-add-cart {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .btn-add-cart:hover {
+            background-color: #3a5bd9;
+        }
+        
+        .btn-view {
+            background-color: #e1e5eb;
+            color: var(--dark-color);
+        }
+        
+        .btn-view:hover {
+            background-color: #d1d5db;
+        }
+        
+        /* Product Modal */
+        .product-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 2000;
+            overflow-y: auto;
+            padding: 20px 0;
+        }
+        
+        .modal-content {
+            background-color: white;
+            border-radius: 15px;
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            animation: fadeIn 0.3s;
+        }
+        
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: #6c757d;
+            cursor: pointer;
+            z-index: 1;
+        }
+        
+        .modal-close:hover {
+            color: var(--dark-color);
+        }
+        
+        .modal-body {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        
+        .modal-img-container {
+            flex: 1;
+            min-width: 300px;
+            padding: 20px;
+        }
+        
+        .modal-img {
+            width: 100%;
+            border-radius: 10px;
+        }
+        
+        .modal-details {
+            flex: 1;
+            min-width: 300px;
+            padding: 20px;
+        }
+        
+        .modal-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+        
+        .modal-rating {
+            color: var(--warning-color);
+            margin-bottom: 15px;
+        }
+        
+        .modal-price {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        
+        .modal-description {
+            margin-bottom: 20px;
+            color: #6c757d;
+        }
+        
+        .product-options {
+            margin-bottom: 20px;
+        }
+        
+        .option-label {
+            font-weight: 600;
+            margin-bottom: 10px;
+            display: block;
+        }
+        
+        .color-options, .size-options {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .color-option {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            border: 2px solid transparent;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .color-option:hover, .color-option.active {
+            border-color: var(--dark-color);
+            transform: scale(1.1);
+        }
+        
+        .size-option {
+            padding: 8px 15px;
+            border: 1px solid #e1e5eb;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .size-option:hover, .size-option.active {
+            border-color: var(--primary-color);
+            background-color: rgba(74, 107, 255, 0.05);
+        }
+        
+        .quantity-selector {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .quantity-btn {
+            width: 35px;
+            height: 35px;
+            border: 1px solid #e1e5eb;
+            background-color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .quantity-btn:hover {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+        }
+        
+        .quantity-input {
+            width: 60px;
+            height: 35px;
+            text-align: center;
+            border: 1px solid #e1e5eb;
+            border-radius: 5px;
+        }
+        
+        .modal-actions {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .btn-modal {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .btn-buy {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .btn-buy:hover {
+            background-color: #3a5bd9;
+        }
+        
+        .btn-inquiry {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+        
+        .btn-inquiry:hover {
+            background-color: #e55555;
+        }
+        
+        /* Inquiry Form */
+        .inquiry-form {
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            margin-top: 20px;
+            display: none;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .form-label {
+            font-weight: 600;
+            margin-bottom: 5px;
+            display: block;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 10px 15px;
+            border: 1px solid #e1e5eb;
+            border-radius: 5px;
+            font-size: 15px;
+            transition: all 0.3s;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(74, 107, 255, 0.1);
+        }
+        
+        .form-textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+        
+        .btn-submit {
+            padding: 12px 30px;
+            background-color: var(--success-color);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .btn-submit:hover {
+            background-color: #218838;
+        }
+        
+        /* Language & Currency Selector */
+        .lang-currency-selector {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        
+        .selector {
+            padding: 8px 15px;
+            border: 1px solid #e1e5eb;
+            border-radius: 5px;
+            background-color: white;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .selector:hover {
+            border-color: var(--primary-color);
+        }
+        
+        /* AI Assistant */
+        .ai-assistant {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1500;
+        }
+        
+        .ai-bubble {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(74, 107, 255, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(74, 107, 255, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(74, 107, 255, 0);
+            }
+        }
+        
+        .ai-bubble:hover {
+            transform: scale(1.1);
+        }
+        
+        .ai-chat {
+            position: absolute;
+            bottom: 80px;
+            right: 0;
+            width: 350px;
+            height: 450px;
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        
+        .ai-chat-header {
+            padding: 15px;
+            background-color: var(--primary-color);
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .ai-chat-close {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+        }
+        
+        .ai-chat-body {
+            flex: 1;
+            padding: 15px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .ai-message {
+            max-width: 80%;
+            padding: 10px 15px;
+            border-radius: 15px;
+            font-size: 14px;
+        }
+        
+        .ai-message.bot {
+            background-color: #f1f3f5;
+            align-self: flex-start;
+        }
+        
+        .ai-message.user {
+            background-color: var(--primary-color);
+            color: white;
+            align-self: flex-end;
+        }
+        
+        .ai-chat-footer {
+            padding: 15px;
+            border-top: 1px solid #e1e5eb;
+            display: flex;
+            gap: 10px;
+        }
+        
+        .ai-input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #e1e5eb;
+            border-radius: 25px;
+            font-size: 14px;
+        }
+        
+        .ai-send-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: none;
+            background-color: var(--primary-color);
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .ai-send-btn:hover {
+            background-color: #3a5bd9;
+        }
+        
+        /* Footer */
+        .footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 60px 0 20px;
+        }
+        
+        .footer-widget {
+            margin-bottom: 30px;
+        }
+        
+        .footer-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--primary-color);
+        }
+        
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #adb5bd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+        
+        .social-icon:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-3px);
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 20px;
+            margin-top: 40px;
+            text-align: center;
+            color: #adb5bd;
+        }
+        
+        /* Loading Spinner */
+        .spinner-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 200px;
+        }
+        
+        .spinner {
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border-left-color: var(--primary-color);
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Toast Notification */
+        .toast-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 3000;
+        }
+        
+        .toast {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            padding: 15px 20px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            min-width: 300px;
+            animation: slideIn 0.3s ease;
+        }
+        
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        
+        .toast.success {
+            border-left: 4px solid var(--success-color);
+        }
+        
+        .toast.error {
+            border-left: 4px solid var(--danger-color);
+        }
+        
+        .toast.info {
+            border-left: 4px solid var(--info-color);
+        }
+        
+        .toast-icon {
+            font-size: 20px;
+        }
+        
+        .toast.success .toast-icon {
+            color: var(--success-color);
+        }
+        
+        .toast.error .toast-icon {
+            color: var(--danger-color);
+        }
+        
+        .toast.info .toast-icon {
+            color: var(--info-color);
+        }
+        
+        .toast-message {
+            flex: 1;
+        }
+        
+        .toast-close {
+            background: none;
+            border: none;
+            color: #6c757d;
+            cursor: pointer;
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero-title {
+                font-size: 36px;
+            }
+            
+            .modal-body {
+                flex-direction: column;
+            }
+            
+            .ai-chat {
+                width: 300px;
+                height: 400px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 28px;
+            }
+            
+            .nav-menu {
+                flex-direction: column;
+            }
+            
+            .header-actions {
+                gap: 10px;
+            }
+            
+            .ai-chat {
+                width: 280px;
+                right: -10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <span><i class="fas fa-phone"></i> +92 345 641 4002</span>
+                    <span class="ms-3"><i class="fas fa-envelope"></i> info@globalmart.com</span>
+                </div>
+                <div class="col-md-6 text-end">
+                    <div class="lang-currency-selector justify-content-end">
+                        <select class="selector" id="languageSelector">
+                            <option value="en">English</option>
+                            <option value="es">Español</option>
+                            <option value="fr">Français</option>
+                            <option value="de">Deutsch</option>
+                            <option value="zh">中文</option>
+                            <option value="ar">العربية</option>
+                            <option value="ur">اردو</option>
+                        </select>
+                        <select class="selector" id="currencySelector">
+                            <option value="USD">USD</option>
+                            <option value="EUR">EUR</option>
+                            <option value="GBP">GBP</option>
+                            <option value="JPY">JPY</option>
+                            <option value="CNY">CNY</option>
+                            <option value="PKR">PKR</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Main Header -->
+    <header class="main-header">
+        <div class="container py-3">
+            <div class="row align-items-center">
+                <div class="col-md-3">
+                    <a href="#" class="logo">GlobalMart</a>
+                </div>
+                <div class="col-md-6">
+                    <div class="search-container">
+                        <input type="text" class="search-input" id="searchInput" placeholder="Search for products...">
+                        <button class="image-search-btn" title="Search by image">
+                            <i class="fas fa-camera"></i>
+                        </button>
+                        <button class="voice-search-btn" title="Voice search">
+                            <i class="fas fa-microphone"></i>
+                        </button>
+                        <button class="search-btn" title="Search">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="header-actions justify-content-end">
+                        <button class="action-btn" title="Wishlist">
+                            <i class="far fa-heart"></i>
+                            <span class="badge-count">0</span>
+                        </button>
+                        <button class="action-btn" title="Cart">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span class="badge-count">0</span>
+                        </button>
+                        <button class="action-btn" title="Account">
+                            <i class="far fa-user"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Main Navigation -->
+    <nav class="main-nav">
+        <div class="container">
+            <ul class="nav-menu" id="navMenu">
+                <!-- Navigation items will be dynamically loaded here -->
+                <li class="nav-item">
+                    <a href="#" class="nav-link" data-category="all">All Products</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="hero-content">
+                        <h1 class="hero-title">Discover Amazing Products</h1>
+                        <p class="hero-subtitle">Shop from our curated collection of premium products from around the world</p>
+                        <button class="hero-btn">Shop Now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Categories Section -->
+    <section class="categories-section">
+        <div class="container">
+            <h2 class="section-title">Shop by Category</h2>
+            <div class="row g-4" id="categoriesContainer">
+                <!-- Categories will be dynamically loaded here -->
+                <div class="spinner-container">
+                    <div class="spinner"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Products Section -->
+    <section class="products-section">
+        <div class="container">
+            <h2 class="section-title">Featured Products</h2>
+            <div class="row g-4" id="productsContainer">
+                <!-- Products will be dynamically loaded here -->
+                <div class="spinner-container">
+                    <div class="spinner"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Product Modal -->
+    <div class="product-modal" id="productModal">
+        <div class="modal-content">
+            <button class="modal-close" id="modalClose">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="modal-body">
+                <div class="modal-img-container">
+                    <img src="" alt="Product" class="modal-img" id="modalImg">
+                </div>
+                <div class="modal-details">
+                    <h2 class="modal-title" id="modalTitle"></h2>
+                    <div class="modal-rating" id="modalRating"></div>
+                    <div class="modal-price" id="modalPrice"></div>
+                    <p class="modal-description" id="modalDescription"></p>
+                    
+                    <div class="product-options">
+                        <label class="option-label">Color:</label>
+                        <div class="color-options" id="colorOptions">
+                            <div class="color-option active" style="background-color: #000000;" data-color="black"></div>
+                            <div class="color-option" style="background-color: #ffffff; border: 1px solid #e1e5eb;" data-color="white"></div>
+                            <div class="color-option" style="background-color: #ff0000;" data-color="red"></div>
+                            <div class="color-option" style="background-color: #0000ff;" data-color="blue"></div>
+                        </div>
+                        
+                        <label class="option-label">Size:</label>
+                        <div class="size-options" id="sizeOptions">
+                            <div class="size-option active" data-size="S">S</div>
+                            <div class="size-option" data-size="M">M</div>
+                            <div class="size-option" data-size="L">L</div>
+                            <div class="size-option" data-size="XL">XL</div>
+                        </div>
+                    </div>
+                    
+                    <div class="quantity-selector">
+                        <label class="option-label">Quantity:</label>
+                        <button class="quantity-btn" id="decreaseQty">-</button>
+                        <input type="number" class="quantity-input" id="quantityInput" value="1" min="1">
+                        <button class="quantity-btn" id="increaseQty">+</button>
+                    </div>
+                    
+                    <div class="modal-actions">
+                        <button class="btn-modal btn-buy" id="buyNowBtn">Buy Now</button>
+                        <button class="btn-modal btn-inquiry" id="inquiryBtn">Inquire Now</button>
+                    </div>
+                    
+                    <!-- Inquiry Form -->
+                    <div class="inquiry-form" id="inquiryForm">
+                        <h4>Product Inquiry</h4>
+                        <form id="productInquiryForm">
+                            <div class="form-group">
+                                <label class="form-label">Product Name</label>
+                                <input type="text" class="form-control" id="inquiryProductName" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Your Name</label>
+                                <input type="text" class="form-control" id="customerName" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Email</label>
+                                <input type="email" class="form-control" id="customerEmail" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Mobile Number</label>
+                                <input type="tel" class="form-control" id="customerMobile" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Message</label>
+                                <textarea class="form-control form-textarea" id="customerMessage" placeholder="Ask about size, color availability or any other question..."></textarea>
+                            </div>
+                            <button type="submit" class="btn-submit">Submit Inquiry</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- AI Assistant -->
+    <div class="ai-assistant">
+        <div class="ai-chat" id="aiChat">
+            <div class="ai-chat-header">
+                <h5>AI Shopping Assistant</h5>
+                <button class="ai-chat-close" id="aiChatClose">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="ai-chat-body" id="aiChatBody">
+                <div class="ai-message bot">
+                    Hello! I'm your AI shopping assistant. How can I help you find the perfect product today?
+                </div>
+            </div>
+            <div class="ai-chat-footer">
+                <input type="text" class="ai-input" id="aiInput" placeholder="Type your message...">
+                <button class="ai-send-btn" id="aiSendBtn">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+        <div class="ai-bubble" id="aiBubble">
+            <i class="fas fa-robot"></i>
+        </div>
+    </div>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6">
+                    <div class="footer-widget">
+                        <h4 class="footer-title">About Us</h4>
+                        <p>GlobalMart is your one-stop destination for premium products from around the world. We offer quality, variety, and exceptional service.</p>
+                        <div class="social-icons">
+                            <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="footer-widget">
+                        <h4 class="footer-title">Quick Links</h4>
+                        <ul class="footer-links">
+                            <li><a href="#">About Us</a></li>
+                            <li><a href="#">Contact Us</a></li>
+                            <li><a href="#">Terms & Conditions</a></li>
+                            <li><a href="#">Privacy Policy</a></li>
+                            <li><a href="#">Return Policy</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="footer-widget">
+                        <h4 class="footer-title">Customer Service</h4>
+                        <ul class="footer-links">
+                            <li><a href="#">Track Order</a></li>
+                            <li><a href="#">My Account</a></li>
+                            <li><a href="#">Wishlist</a></li>
+                            <li><a href="#">Shopping Cart</a></li>
+                            <li><a href="#">FAQs</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="footer-widget">
+                        <h4 class="footer-title">Contact Info</h4>
+                        <ul class="footer-links">
+                            <li><i class="fas fa-map-marker-alt"></i> 123 Main Street, New York, USA</li>
+                            <li><i class="fas fa-phone"></i> +92 345 641 4002</li>
+                            <li><i class="fas fa-envelope"></i> info@globalmart.com</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 GlobalMart. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Toast Container -->
+    <div class="toast-container" id="toastContainer"></div>
+    
+    <!-- Hidden file input for image search -->
+    <input type="file" id="imageSearchInput" accept="image/*" style="display: none;">
+    
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Google Sheets configuration
+        const SPREADSHEET_ID = '2PACX-1vTZ9R4y7q5oBfG6sX5rfrvsD3zhK5erLp0Ilmx_BQZZ3EcF2aMmFIv_YZfLuY6Q1BY_OIDZ635B0wMJ';
+        const API_KEY = 'AIzaSyB-6uP8D4jx8F5hC7k9g0l1m2n3o4p5q6r7'; // You'll need to provide your own API key
+        const SHEET_ID = '1446387741';
+        
+        // Product data
+        let products = [];
+        let categories = {};
+        
+        // Currency conversion rates (relative to USD)
+        const currencyRates = {
+            USD: 1,
+            EUR: 0.92,
+            GBP: 0.79,
+            JPY: 149.50,
+            CNY: 7.24,
+            PKR: 285.50
+        };
+        
+        // Language translations
+        const translations = {
+            en: {
+                searchPlaceholder: "Search for products...",
+                shopNow: "Shop Now",
+                addToCart: "Add to Cart",
+                viewDetails: "View Details",
+                buyNow: "Buy Now",
+                inquireNow: "Inquire Now",
+                productInquiry: "Product Inquiry",
+                yourName: "Your Name",
+                email: "Email",
+                mobileNumber: "Mobile Number",
+                message: "Message",
+                submitInquiry: "Submit Inquiry",
+                thankYouInquiry: "Thank you for your inquiry! We'll contact you soon.",
+                addedToCart: "Product added to cart!",
+                aiWelcome: "Hello! I'm your AI shopping assistant. How can I help you find the perfect product today?",
+                aiSuggestions: {
+                    electronics: "You might be interested in our latest electronics collection. We have headphones, cameras, and smart watches.",
+                    fashion: "Check out our fashion section for trendy clothes, shoes, and accessories.",
+                    home: "Transform your living space with our home and garden products.",
+                    sports: "Get active with our sports equipment and fitness gear."
+                }
+            },
+            es: {
+                searchPlaceholder: "Buscar productos...",
+                shopNow: "Comprar Ahora",
+                addToCart: "Añadir al Carrito",
+                viewDetails: "Ver Detalles",
+                buyNow: "Comprar Ahora",
+                inquireNow: "Consultar Ahora",
+                productInquiry: "Consulta de Producto",
+                yourName: "Tu Nombre",
+                email: "Correo Electrónico",
+                mobileNumber: "Número de Móvil",
+                message: "Mensaje",
+                submitInquiry: "Enviar Consulta",
+                thankYouInquiry: "¡Gracias por tu consulta! Te contactaremos pronto.",
+                addedToCart: "¡Producto añadido al carrito!",
+                aiWelcome: "¡Hola! Soy tu asistente de compras de IA. ¿Cómo puedo ayudarte a encontrar el producto perfecto hoy?",
+                aiSuggestions: {
+                    electronics: "Puede que te interesen nuestros últimos productos electrónicos. Tenemos auriculares, cámaras y relojes inteligentes.",
+                    fashion: "Consulta nuestra sección de moda para ropa, zapatos y accesorios de tendencia.",
+                    home: "Transforma tu espacio vital con nuestros productos para el hogar y jardín.",
+                    sports: "Actívate con nuestro equipo deportivo y artículos de fitness."
+                }
+            },
+            fr: {
+                searchPlaceholder: "Rechercher des produits...",
+                shopNow: "Acheter Maintenant",
+                addToCart: "Ajouter au Panier",
+                viewDetails: "Voir les Détails",
+                buyNow: "Acheter Maintenant",
+                inquireNow: "Demander Maintenant",
+                productInquiry: "Demande de Produit",
+                yourName: "Votre Nom",
+                email: "Email",
+                mobileNumber: "Numéro de Mobile",
+                message: "Message",
+                submitInquiry: "Envoyer la Demande",
+                thankYouInquiry: "Merci pour votre demande! Nous vous contacterons bientôt.",
+                addedToCart: "Produit ajouté au panier!",
+                aiWelcome: "Bonjour! Je suis votre assistant d'achat IA. Comment puis-je vous aider à trouver le produit parfait aujourd'hui?",
+                aiSuggestions: {
+                    electronics: "Vous pourriez être intéressé par notre dernière collection d'électronique. Nous avons des écouteurs, des caméras et des montres intelligentes.",
+                    fashion: "Consultez notre section mode pour des vêtements, chaussures et accessoires tendance.",
+                    home: "Transformez votre espace de vie avec nos produits pour la maison et le jardin.",
+                    sports: "Soyez actif avec notre équipement sportif et articles de fitness."
+                }
+            },
+            de: {
+                searchPlaceholder: "Produkte suchen...",
+                shopNow: "Jetzt Kaufen",
+                addToCart: "In den Warenkorb",
+                viewDetails: "Details Ansehen",
+                buyNow: "Jetzt Kaufen",
+                inquireNow: "Anfragen",
+                productInquiry: "Produktanfrage",
+                yourName: "Ihr Name",
+                email: "E-Mail",
+                mobileNumber: "Mobilnummer",
+                message: "Nachricht",
+                submitInquiry: "Anfrage Senden",
+                thankYouInquiry: "Vielen Dank für Ihre Anfrage! Wir werden Sie bald kontaktieren.",
+                addedToCart: "Produkt zum Warenkorb hinzugefügt!",
+                aiWelcome: "Hallo! Ich bin Ihr KI-Einkaufsassistent. Wie kann ich Ihnen helfen, das perfekte Produkt heute zu finden?",
+                aiSuggestions: {
+                    electronics: "Sie könnten an unserer neuesten Elektronik-Kollektion interessiert sein. Wir haben Kopfhörer, Kameras und Smartwatches.",
+                    fashion: "Schauen Sie sich unsere Mode-Abteilung für trendige Kleidung, Schuhe und Accessoires an.",
+                    home: "Verwandeln Sie Ihren Wohnraum mit unseren Produkten für Haus und Garten.",
+                    sports: "Werden Sie aktiv mit unserer Sportausrüstung und Fitness-Produkten."
+                }
+            },
+            zh: {
+                searchPlaceholder: "搜索产品...",
+                shopNow: "立即购买",
+                addToCart: "加入购物车",
+                viewDetails: "查看详情",
+                buyNow: "立即购买",
+                inquireNow: "立即咨询",
+                productInquiry: "产品咨询",
+                yourName: "您的姓名",
+                email: "电子邮件",
+                mobileNumber: "手机号码",
+                message: "留言",
+                submitInquiry: "提交咨询",
+                thankYouInquiry: "感谢您的咨询！我们会尽快与您联系。",
+                addedToCart: "产品已添加到购物车！",
+                aiWelcome: "您好！我是您的AI购物助手。今天我如何帮助您找到完美的产品？",
+                aiSuggestions: {
+                    electronics: "您可能对我们最新的电子产品系列感兴趣。我们有耳机、相机和智能手表。",
+                    fashion: "查看我们的时尚部门，寻找时尚的服装、鞋子和配饰。",
+                    home: "用我们的家居和花园产品改造您的居住空间。",
+                    sports: "用我们的运动器材和健身产品保持活力。"
+                }
+            },
+            ar: {
+                searchPlaceholder: "ابحث عن المنتجات...",
+                shopNow: "تسوق الآن",
+                addToCart: "أضف إلى السلة",
+                viewDetails: "عرض التفاصيل",
+                buyNow: "اشتر الآن",
+                inquireNow: "استفسار الآن",
+                productInquiry: "استفسار المنتج",
+                yourName: "اسمك",
+                email: "البريد الإلكتروني",
+                mobileNumber: "رقم الجوال",
+                message: "رسالة",
+                submitInquiry: "إرسال الاستفسار",
+                thankYouInquiry: "شكراً لاستفسارك! سنتواصل معك قريباً.",
+                addedToCart: "تمت إضافة المنتج إلى السلة!",
+                aiWelcome: "مرحباً! أنا مساعد التسوق بالذكاء الاصطناعي الخاص بك. كيف يمكنني مساعدتك في العثور على المنتج المثالي اليوم؟",
+                aiSuggestions: {
+                    electronics: "قد تكون مهتمًا بمجموعة الإلكترونيات الأحدث لدينا. لدينا سماعات وكاميرات وساعات ذكية.",
+                    fashion: "تحقق من قسم الأزياء لدينا للحصول على ملابس وأحذية وإكسسوارات عصرية.",
+                    home: "حول مساحة معيشتك بمنتجاتنا للمنزل والحديقة.",
+                    sports: "كن نشيطًا مع معداتنا الرياضية ومنتجات اللياقة البدنية."
+                }
+            },
+            ur: {
+                searchPlaceholder: "پرڈکٹس تلاش کریں...",
+                shopNow: "ابھی خریدیں",
+                addToCart: "کارٹ میں شامل کریں",
+                viewDetails: "تفصیلات دیکھیں",
+                buyNow: "ابھی خریدیں",
+                inquireNow: "ابھی پوچھیں",
+                productInquiry: "پرڈکٹ استفسار",
+                yourName: "آپ کا نام",
+                email: "ای میل",
+                mobileNumber: "موبائل نمبر",
+                message: "پیغام",
+                submitInquiry: "استفسار بھیجیں",
+                thankYouInquiry: "آپ کے استفسار کا شکریہ! ہم جلد آپ سے رابطہ کریں گے۔",
+                addedToCart: "پرڈکٹ کارٹ میں شامل کر دی گئی!",
+                aiWelcome: "سلام! میں آپ کا AI شاپنگ اسسٹنٹ ہوں۔ آج میں آپ کو کامل پرڈکٹ تلاش کرنے میں کیسے مدد کر سکتا ہوں؟",
+                aiSuggestions: {
+                    electronics: "آپ ہمارے تازہ ترین الیکٹرانکس مجموعے میں دلچسپی لے سکتے ہیں۔ ہمارے پاس ہیڈ فونز، کیمرے، اور سمارٹ واچ ہیں۔",
+                    fashion: "فیشن سیکشن میں ہمارے ٹرینڈی کپڑے، جوتے، اور ایسیسریز چیک کریں۔",
+                    home: "ہمارے گھر اور باغ کے مصنوعات کے ساتھ اپنی رہائش کی جگہ تبدیل کریں۔",
+                    sports: "ہمارے اسپورٹس سامان اور فٹنس گیئر کے ساتھ فعال رہیں۔"
+                }
+            }
+        };
+        
+        // Current language and currency
+        let currentLanguage = 'en';
+        let currentCurrency = 'USD';
+        let currentCategory = 'all';
+        
+        // DOM elements
+        const productsContainer = document.getElementById('productsContainer');
+        const categoriesContainer = document.getElementById('categoriesContainer');
+        const navMenu = document.getElementById('navMenu');
+        const productModal = document.getElementById('productModal');
+        const modalClose = document.getElementById('modalClose');
+        const modalImg = document.getElementById('modalImg');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalRating = document.getElementById('modalRating');
+        const modalPrice = document.getElementById('modalPrice');
+        const modalDescription = document.getElementById('modalDescription');
+        const inquiryForm = document.getElementById('inquiryForm');
+        const inquiryBtn = document.getElementById('inquiryBtn');
+        const productInquiryForm = document.getElementById('productInquiryForm');
+        const inquiryProductName = document.getElementById('inquiryProductName');
+        const customerName = document.getElementById('customerName');
+        const customerEmail = document.getElementById('customerEmail');
+        const customerMobile = document.getElementById('customerMobile');
+        const customerMessage = document.getElementById('customerMessage');
+        const searchInput = document.getElementById('searchInput');
+        const languageSelector = document.getElementById('languageSelector');
+        const currencySelector = document.getElementById('currencySelector');
+        const aiBubble = document.getElementById('aiBubble');
+        const aiChat = document.getElementById('aiChat');
+        const aiChatClose = document.getElementById('aiChatClose');
+        const aiChatBody = document.getElementById('aiChatBody');
+        const aiInput = document.getElementById('aiInput');
+        const aiSendBtn = document.getElementById('aiSendBtn');
+        const imageSearchBtn = document.querySelector('.image-search-btn');
+        const imageSearchInput = document.getElementById('imageSearchInput');
+        const voiceSearchBtn = document.querySelector('.voice-search-btn');
+        const decreaseQty = document.getElementById('decreaseQty');
+        const increaseQty = document.getElementById('increaseQty');
+        const quantityInput = document.getElementById('quantityInput');
+        const colorOptions = document.querySelectorAll('.color-option');
+        const sizeOptions = document.querySelectorAll('.size-option');
+        
+        // Initialize the app
+        function init() {
+            fetchProductsFromGoogleSheets();
+            setupEventListeners();
+            updateLanguage();
+            updateCurrency();
+        }
+        
+        // Fetch products from Google Sheets
+       // Replace the fetchProductsFromGoogleSheets function with this improved version
+// Replace the existing fetchProductsFromGoogleSheets function with this one
+// Replace the existing fetchProductsFromGoogleSheets function with this one
+function fetchProductsFromGoogleSheets() {
+    // Show loading spinners
+    productsContainer.innerHTML = '<div class="spinner-container"><div class="spinner"></div></div>';
+    categoriesContainer.innerHTML = '<div class="spinner-container"><div class="spinner"></div></div>';
+    
+    // Try different methods to fetch the data
+    tryFetchWithCorsProxy()
+        .then(() => {
+            console.log('Data fetched successfully with CORS proxy');
+        })
+        .catch(error => {
+            console.error('CORS proxy failed:', error);
+            return tryFetchWithDirectLink();
+        })
+        .then(() => {
+            console.log('Data fetched successfully');
+        })
+        .catch(error => {
+            console.error('All methods failed:', error);
+            loadSampleData();
+        });
+}
+
+// Try fetching with CORS proxy
+function tryFetchWithCorsProxy() {
+    return new Promise((resolve, reject) => {
+        const csvUrl = `https://cors-anywhere.herokuapp.com/https://docs.google.com/spreadsheets/d/e/${SPREADSHEET_ID}/pub?output=csv&gid=${SHEET_ID}`;
+        
+        fetch(csvUrl)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                return response.text();
+            })
+            .then(csvData => {
+                parseCSVData(csvData);
+                renderCategories();
+                renderProducts();
+                updateNavigation();
+                resolve();
+            })
+            .catch(error => {
+                reject(error);
+            });
+    });
+}
+
+// Try fetching with direct link
+function tryFetchWithDirectLink() {
+    return new Promise((resolve, reject) => {
+        const csvUrl = `https://docs.google.com/spreadsheets/d/e/${SPREADSHEET_ID}/pub?output=csv&gid=${SHEET_ID}`;
+        
+        fetch(csvUrl)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                return response.text();
+            })
+            .then(csvData => {
+                parseCSVData(csvData);
+                renderCategories();
+                renderProducts();
+                updateNavigation();
+                resolve();
+            })
+            .catch(error => {
+                reject(error);
+            });
+    });
+}
+
+// Replace the existing parseCSVData function with this improved version
+function parseCSVData(csvData) {
+    // Handle potential BOM (Byte Order Mark) at the beginning of the file
+    if (csvData.charCodeAt(0) === 0xFEFF) {
+        csvData = csvData.slice(1);
+    }
+    
+    // Split by lines, handling both \r\n and \n line endings
+    const lines = csvData.split(/\r?\n/);
+    
+    if (lines.length === 0) {
+        console.error('CSV data is empty');
+        return;
+    }
+    
+    // Parse headers with better handling of quoted values
+    const headers = parseCSVLine(lines[0]);
+    
+    products = [];
+    
+    for (let i = 1; i < lines.length; i++) {
+        if (lines[i].trim() === '') continue;
+        
+        // Parse each line with proper handling of quoted values and commas within quotes
+        const values = parseCSVLine(lines[i]);
+        
+        const product = {};
+        
+        // Map CSV columns to product properties
+        headers.forEach((header, index) => {
+            // Skip empty values
+            if (index >= values.length || values[index] === '') return;
+            
+            switch (header.toLowerCase()) {
+                case 'id':
+                    product.id = parseInt(values[index]);
+                    break;
+                case 'name':
+                    product.name = values[index];
+                    break;
+                case 'regular price':
+                case 'price':
+                    product.price = parseFloat(values[index]);
+                    break;
+                case 'description':
+                    product.description = values[index];
+                    break;
+                case 'in stock?':
+                    product.inStock = values[index].toLowerCase() === 'yes';
+                    break;
+                case 'images':
+                    product.image = values[index];
+                    break;
+                case 'categories':
+                    product.category = values[index];
+                    break;
+                case 'published':
+                    product.published = values[index].toLowerCase() === 'yes';
+                    break;
+                case 'short description':
+                    product.shortDescription = values[index];
+                    break;
+                // Add more cases as needed for your specific sheet columns
+            }
+        });
+        
+        // Add default values for missing properties
+        if (!product.id) product.id = i;
+        if (!product.image) product.image = `https://picsum.photos/seed/product${i}/400/400.jpg`;
+        if (!product.rating) product.rating = Math.random() * 2 + 3; // Random rating between 3-5
+        if (!product.reviews) product.reviews = Math.floor(Math.random() * 200) + 10; // Random reviews between 10-210
+        if (!product.oldPrice) product.oldPrice = product.price * 1.2; // 20% higher old price
+        if (product.published === undefined) product.published = true; // Default to published
+        
+        // Only add published products
+        if (product.published) {
+            products.push(product);
+            
+            // Update categories
+            if (product.category) {
+                if (!categories[product.category]) {
+                    categories[product.category] = {
+                        name: product.category,
+                        count: 0,
+                        icon: getCategoryIcon(product.category)
+                    };
+                }
+                categories[product.category].count++;
+            }
+        }
+    }
+}
+
+// Helper function to parse a CSV line with proper handling of quoted values
+function parseCSVLine(line) {
+    const result = [];
+    let current = '';
+    let inQuotes = false;
+    
+    for (let i = 0; i < line.length; i++) {
+        const char = line[i];
+        
+        if (char === '"') {
+            if (inQuotes && line[i + 1] === '"') {
+                // Escaped quote within quotes
+                current += '"';
+                i++; // Skip the next quote
+            } else {
+                // Toggle quote state
+                inQuotes = !inQuotes;
+            }
+        } else if (char === ',' && !inQuotes) {
+            // Field separator
+            result.push(current.trim());
+            current = '';
+        } else {
+            current += char;
+        }
+    }
+    
+    // Add the last field
+    result.push(current.trim());
+    
+    return result;
+}
+// Try fetching with CORS proxy
+function tryFetchWithCorsProxy() {
+    return new Promise((resolve, reject) => {
+        const csvUrl = `https://cors-anywhere.herokuapp.com/https://docs.google.com/spreadsheets/d/e/${SPREADSHEET_ID}/pub?output=csv&gid=${SHEET_ID}`;
+        
+        fetch(csvUrl)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                return response.text();
+            })
+            .then(csvData => {
+                parseCSVData(csvData);
+                renderCategories();
+                renderProducts();
+                updateNavigation();
+                resolve();
+            })
+            .catch(error => {
+                reject(error);
+            });
+    });
+}
+
+// Try fetching with direct link
+function tryFetchWithDirectLink() {
+    return new Promise((resolve, reject) => {
+        const csvUrl = `https://docs.google.com/spreadsheets/d/e/${SPREADSHEET_ID}/pub?output=csv&gid=${SHEET_ID}`;
+        
+        fetch(csvUrl)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                return response.text();
+            })
+            .then(csvData => {
+                parseCSVData(csvData);
+                renderCategories();
+                renderProducts();
+                updateNavigation();
+                resolve();
+            })
+            .catch(error => {
+                reject(error);
+            });
+    });
+}
+
+// Replace the existing parseCSVData function with this improved version
+function parseCSVData(csvData) {
+    // Handle potential BOM (Byte Order Mark) at the beginning of the file
+    if (csvData.charCodeAt(0) === 0xFEFF) {
+        csvData = csvData.slice(1);
+    }
+    
+    // Split by lines, handling both \r\n and \n line endings
+    const lines = csvData.split(/\r?\n/);
+    
+    if (lines.length === 0) {
+        console.error('CSV data is empty');
+        return;
+    }
+    
+    // Parse headers with better handling of quoted values
+    const headers = parseCSVLine(lines[0]);
+    
+    products = [];
+    
+    for (let i = 1; i < lines.length; i++) {
+        if (lines[i].trim() === '') continue;
+        
+        // Parse each line with proper handling of quoted values and commas within quotes
+        const values = parseCSVLine(lines[i]);
+        
+        const product = {};
+        
+        // Map CSV columns to product properties
+        headers.forEach((header, index) => {
+            // Skip empty values
+            if (index >= values.length || values[index] === '') return;
+            
+            switch (header.toLowerCase()) {
+                case 'id':
+                    product.id = parseInt(values[index]);
+                    break;
+                case 'name':
+                    product.name = values[index];
+                    break;
+                case 'regular price':
+                case 'price':
+                    product.price = parseFloat(values[index]);
+                    break;
+                case 'description':
+                    product.description = values[index];
+                    break;
+                case 'in stock?':
+                    product.inStock = values[index].toLowerCase() === 'yes';
+                    break;
+                case 'images':
+                    product.image = values[index];
+                    break;
+                case 'categories':
+                    product.category = values[index];
+                    break;
+                case 'published':
+                    product.published = values[index].toLowerCase() === 'yes';
+                    break;
+                case 'short description':
+                    product.shortDescription = values[index];
+                    break;
+                // Add more cases as needed for your specific sheet columns
+            }
+        });
+        
+        // Add default values for missing properties
+        if (!product.id) product.id = i;
+        if (!product.image) product.image = `https://picsum.photos/seed/product${i}/400/400.jpg`;
+        if (!product.rating) product.rating = Math.random() * 2 + 3; // Random rating between 3-5
+        if (!product.reviews) product.reviews = Math.floor(Math.random() * 200) + 10; // Random reviews between 10-210
+        if (!product.oldPrice) product.oldPrice = product.price * 1.2; // 20% higher old price
+        if (product.published === undefined) product.published = true; // Default to published
+        
+        // Only add published products
+        if (product.published) {
+            products.push(product);
+            
+            // Update categories
+            if (product.category) {
+                if (!categories[product.category]) {
+                    categories[product.category] = {
+                        name: product.category,
+                        count: 0,
+                        icon: getCategoryIcon(product.category)
+                    };
+                }
+                categories[product.category].count++;
+            }
+        }
+    }
+}
+
+// Helper function to parse a CSV line with proper handling of quoted values
+function parseCSVLine(line) {
+    const result = [];
+    let current = '';
+    let inQuotes = false;
+    
+    for (let i = 0; i < line.length; i++) {
+        const char = line[i];
+        
+        if (char === '"') {
+            if (inQuotes && line[i + 1] === '"') {
+                // Escaped quote within quotes
+                current += '"';
+                i++; // Skip the next quote
+            } else {
+                // Toggle quote state
+                inQuotes = !inQuotes;
+            }
+        } else if (char === ',' && !inQuotes) {
+            // Field separator
+            result.push(current.trim());
+            current = '';
+        } else {
+            current += char;
+        }
+    }
+    
+    // Add the last field
+    result.push(current.trim());
+    
+    return result;
+}
+function fetchWithFallback(url) {
+    return fetch(url, {
+        method: 'GET',
+        mode: 'cors',
+        headers: {
+            'Accept': 'text/csv',
+        }
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.text();
+    });
+}
+
+        // Parse CSV data from Google Sheets
+        function parseCSVData(csvData) {
+            const lines = csvData.split('\n');
+            const headers = lines[0].split(',').map(header => header.trim());
+            
+            products = [];
+            
+            for (let i = 1; i < lines.length; i++) {
+                if (lines[i].trim() === '') continue;
+                
+                const values = lines[i].split(',').map(value => value.trim());
+                const product = {};
+                
+                // Map CSV columns to product properties
+                headers.forEach((header, index) => {
+                    // Skip empty values
+                    if (values[index] === '') return;
+                    
+                    switch (header.toLowerCase()) {
+                        case 'id':
+                            product.id = parseInt(values[index]);
+                            break;
+                        case 'name':
+                            product.name = values[index];
+                            break;
+                        case 'regular price':
+                        case 'price':
+                            product.price = parseFloat(values[index]);
+                            break;
+                        case 'description':
+                            product.description = values[index];
+                            break;
+                        case 'in stock?':
+                            product.inStock = values[index].toLowerCase() === 'yes';
+                            break;
+                        case 'images':
+                            product.image = values[index];
+                            break;
+                        case 'categories':
+                            product.category = values[index];
+                            break;
+                        case 'published':
+                            product.published = values[index].toLowerCase() === 'yes';
+                            break;
+                        case 'short description':
+                            product.shortDescription = values[index];
+                            break;
+                        // Add more cases as needed for your specific sheet columns
+                    }
+                });
+                
+                // Add default values for missing properties
+                if (!product.id) product.id = i;
+                if (!product.image) product.image = `https://picsum.photos/seed/product${i}/400/400.jpg`;
+                if (!product.rating) product.rating = Math.random() * 2 + 3; // Random rating between 3-5
+                if (!product.reviews) product.reviews = Math.floor(Math.random() * 200) + 10; // Random reviews between 10-210
+                if (!product.oldPrice) product.oldPrice = product.price * 1.2; // 20% higher old price
+                if (product.published === undefined) product.published = true; // Default to published
+                
+                // Only add published products
+                if (product.published) {
+                    products.push(product);
+                    
+                    // Update categories
+                    if (product.category) {
+                        if (!categories[product.category]) {
+                            categories[product.category] = {
+                                name: product.category,
+                                count: 0,
+                                icon: getCategoryIcon(product.category)
+                            };
+                        }
+                        categories[product.category].count++;
+                    }
+                }
+            }
+        }
+        
+        // Get appropriate icon for category
+        function getCategoryIcon(category) {
+            const categoryLower = category.toLowerCase();
+            if (categoryLower.includes('electronic')) return 'fa-laptop';
+            if (categoryLower.includes('fashion') || categoryLower.includes('cloth')) return 'fa-tshirt';
+            if (categoryLower.includes('home') || categoryLower.includes('garden')) return 'fa-home';
+            if (categoryLower.includes('sport')) return 'fa-football-ball';
+            if (categoryLower.includes('book')) return 'fa-book';
+            if (categoryLower.includes('toy')) return 'fa-gamepad';
+            return 'fa-box';
+        }
+        
+        // Load sample data if Google Sheets fails
+        function loadSampleData() {
+            products = [
+                {
+                    id: 1,
+                    name: "Premium Wireless Headphones",
+                    price: 89.99,
+                    oldPrice: 129.99,
+                    image: "https://picsum.photos/seed/headphones/400/400.jpg",
+                    rating: 4.5,
+                    reviews: 124,
+                    badge: "Sale",
+                    description: "Experience premium sound quality with these wireless headphones. Features include noise cancellation, 30-hour battery life, and comfortable design for all-day wear.",
+                    category: "Electronics"
+                },
+                {
+                    id: 2,
+                    name: "Stylish Leather Jacket",
+                    price: 199.99,
+                    oldPrice: 249.99,
+                    image: "https://picsum.photos/seed/jacket/400/400.jpg",
+                    rating: 4.8,
+                    reviews: 89,
+                    badge: "New",
+                    description: "Elevate your style with this genuine leather jacket. Crafted with attention to detail, it's perfect for any season and occasion.",
+                    category: "Fashion"
+                },
+                {
+                    id: 3,
+                    name: "Smart Home Security Camera",
+                    price: 79.99,
+                    oldPrice: 99.99,
+                    image: "https://picsum.photos/seed/camera/400/400.jpg",
+                    rating: 4.3,
+                    reviews: 156,
+                    badge: "Hot",
+                    description: "Keep your home secure with this smart security camera. Features include motion detection, night vision, and mobile app control.",
+                    category: "Electronics"
+                },
+                {
+                    id: 4,
+                    name: "Organic Cotton T-Shirt",
+                    price: 24.99,
+                    oldPrice: 34.99,
+                    image: "https://picsum.photos/seed/tshirt/400/400.jpg",
+                    rating: 4.6,
+                    reviews: 203,
+                    badge: "Eco",
+                    description: "Comfortable and sustainable, this organic cotton t-shirt is perfect for everyday wear. Available in multiple colors and sizes.",
+                    category: "Fashion"
+                },
+                {
+                    id: 5,
+                    name: "Professional Yoga Mat",
+                    price: 39.99,
+                    oldPrice: 49.99,
+                    image: "https://picsum.photos/seed/yogamat/400/400.jpg",
+                    rating: 4.7,
+                    reviews: 167,
+                    badge: "Sale",
+                    description: "Enhance your yoga practice with this professional-grade yoga mat. Non-slip surface, extra cushioning, and eco-friendly materials.",
+                    category: "Sports"
+                },
+                {
+                    id: 6,
+                    name: "Modern Table Lamp",
+                    price: 54.99,
+                    oldPrice: 69.99,
+                    image: "https://picsum.photos/seed/lamp/400/400.jpg",
+                    rating: 4.4,
+                    reviews: 92,
+                    badge: "New",
+                    description: "Add style and functionality to any room with this modern table lamp. Adjustable brightness, energy-efficient LED, and sleek design.",
+                    category: "Home & Garden"
+                },
+                {
+                    id: 7,
+                    name: "Fitness Tracker Watch",
+                    price: 119.99,
+                    oldPrice: 159.99,
+                    image: "https://picsum.photos/seed/watch/400/400.jpg",
+                    rating: 4.5,
+                    reviews: 234,
+                    badge: "Hot",
+                    description: "Track your fitness goals with this advanced smartwatch. Monitor heart rate, steps, sleep, and more. Water-resistant with long battery life.",
+                    category: "Electronics"
+                },
+                {
+                    id: 8,
+                    name: "Ceramic Plant Pots Set",
+                    price: 34.99,
+                    oldPrice: 44.99,
+                    image: "https://picsum.photos/seed/pots/400/400.jpg",
+                    rating: 4.2,
+                    reviews: 78,
+                    badge: "Sale",
+                    description: "Beautiful ceramic plant pots to showcase your greenery. Set of 3 different sizes with drainage holes and matching saucers.",
+                    category: "Home & Garden"
+                }
+            ];
+            
+            // Create categories from sample data
+            categories = {};
+            products.forEach(product => {
+                if (!categories[product.category]) {
+                    categories[product.category] = {
+                        name: product.category,
+                        count: 0,
+                        icon: getCategoryIcon(product.category)
+                    };
+                }
+                categories[product.category].count++;
+            });
+            
+            renderCategories();
+            renderProducts();
+            updateNavigation();
+        }
+        
+        // Render categories
+        function renderCategories() {
+            categoriesContainer.innerHTML = '';
+            
+            Object.values(categories).forEach(category => {
+                const categoryCard = document.createElement('div');
+                categoryCard.className = 'col-md-3 col-6';
+                
+                categoryCard.innerHTML = `
+                    <div class="category-card" data-category="${category.name}">
+                        <div class="category-icon">
+                            <i class="fas ${category.icon}"></i>
+                        </div>
+                        <h3 class="category-name">${category.name}</h3>
+                        <p class="category-count">${category.count} Products</p>
+                    </div>
+                `;
+                
+                categoriesContainer.appendChild(categoryCard);
+            });
+            
+            // Add event listeners to category cards
+            document.querySelectorAll('.category-card').forEach(card => {
+                card.addEventListener('click', function() {
+                    const categoryName = this.getAttribute('data-category');
+                    filterProductsByCategory(categoryName);
+                });
+            });
+        }
+        
+        // Update navigation with categories
+        function updateNavigation() {
+            // Keep the "All Products" link
+            const allProductsLink = navMenu.querySelector('[data-category="all"]');
+            if (!allProductsLink) {
+                const allProductsItem = document.createElement('li');
+                allProductsItem.className = 'nav-item';
+                allProductsItem.innerHTML = '<a href="#" class="nav-link" data-category="all">All Products</a>';
+                navMenu.appendChild(allProductsItem);
+            }
+            
+            // Add category links
+            Object.keys(categories).forEach(categoryName => {
+                const existingLink = navMenu.querySelector(`[data-category="${categoryName}"]`);
+                if (!existingLink) {
+                    const navItem = document.createElement('li');
+                    navItem.className = 'nav-item';
+                    navItem.innerHTML = `<a href="#" class="nav-link" data-category="${categoryName}">${categoryName}</a>`;
+                    navMenu.appendChild(navItem);
+                }
+            });
+            
+            // Add event listeners to navigation links
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const categoryName = this.getAttribute('data-category');
+                    filterProductsByCategory(categoryName);
+                });
+            });
+        }
+        
+        // Filter products by category
+        function filterProductsByCategory(categoryName) {
+            currentCategory = categoryName;
+            
+            // Update active state in navigation
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('data-category') === categoryName) {
+                    link.classList.add('active');
+                }
+            });
+            
+            // Filter and render products
+            let filteredProducts = products;
+            if (categoryName !== 'all') {
+                filteredProducts = products.filter(product => product.category === categoryName);
+            }
+            
+            renderProducts(filteredProducts);
+            
+            // Scroll to products section
+            document.querySelector('.products-section').scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        // Render products
+        function renderProducts(productsToRender = products) {
+            productsContainer.innerHTML = '';
+            
+            if (productsToRender.length === 0) {
+                productsContainer.innerHTML = '<div class="col-12 text-center py-5"><h3>No products found</h3></div>';
+                return;
+            }
+            
+            productsToRender.forEach(product => {
+                const productCard = document.createElement('div');
+                productCard.className = 'col-md-3 col-sm-6';
+                
+                const price = convertPrice(product.price);
+                const oldPrice = convertPrice(product.oldPrice || product.price * 1.2);
+                
+                productCard.innerHTML = `
+                    <div class="product-card">
+                        ${product.badge ? `<div class="product-badge">${product.badge}</div>` : ''}
+                        <img src="${product.image}" alt="${product.name}" class="product-img">
+                        <div class="product-body">
+                            <h3 class="product-title">${product.name}</h3>
+                            <div class="product-rating">
+                                ${generateStars(product.rating)}
+                                <span>(${product.reviews})</span>
+                            </div>
+                            <div class="product-price">
+                                <span class="current-price">${currentCurrency} ${price}</span>
+                                <span class="old-price">${currentCurrency} ${oldPrice}</span>
+                            </div>
+                            <div class="product-actions">
+                                <button class="btn-product btn-add-cart" data-id="${product.id}">
+                                    <i class="fas fa-shopping-cart"></i> ${translations[currentLanguage].addToCart}
+                                </button>
+                                <button class="btn-product btn-view" data-id="${product.id}">
+                                    <i class="fas fa-eye"></i> ${translations[currentLanguage].viewDetails}
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                
+                productsContainer.appendChild(productCard);
+            });
+            
+            // Add event listeners to product buttons
+            document.querySelectorAll('.btn-add-cart').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const productId = parseInt(this.getAttribute('data-id'));
+                    addToCart(productId);
+                });
+            });
+            
+            document.querySelectorAll('.btn-view').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const productId = parseInt(this.getAttribute('data-id'));
+                    showProductModal(productId);
+                });
+            });
+        }
+        
+        // Generate star rating HTML
+        function generateStars(rating) {
+            let starsHTML = '';
+            const fullStars = Math.floor(rating);
+            const hasHalfStar = rating % 1 !== 0;
+            
+            for (let i = 0; i < fullStars; i++) {
+                starsHTML += '<i class="fas fa-star"></i>';
+            }
+            
+            if (hasHalfStar) {
+                starsHTML += '<i class="fas fa-star-half-alt"></i>';
+            }
+            
+            const emptyStars = 5 - Math.ceil(rating);
+            for (let i = 0; i < emptyStars; i++) {
+                starsHTML += '<i class="far fa-star"></i>';
+            }
+            
+            return starsHTML;
+        }
+        
+        // Convert price based on selected currency
+        function convertPrice(price) {
+            const convertedPrice = price * currencyRates[currentCurrency];
+            return convertedPrice.toFixed(2);
+        }
+        
+        // Show product modal
+        function showProductModal(productId) {
+            const product = products.find(p => p.id === productId);
+            
+            if (!product) return;
+            
+            modalImg.src = product.image;
+            modalTitle.textContent = product.name;
+            modalRating.innerHTML = generateStars(product.rating) + ` <span>(${product.reviews})</span>`;
+            modalPrice.textContent = `${currentCurrency} ${convertPrice(product.price)}`;
+            modalDescription.textContent = product.description;
+            inquiryProductName.value = product.name;
+            
+            productModal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+        
+        // Add product to cart
+        function addToCart(productId) {
+            const product = products.find(p => p.id === productId);
+            
+            if (!product) return;
+            
+            // Update cart count
+            const cartBadge = document.querySelector('.action-btn:nth-child(2) .badge-count');
+            cartBadge.textContent = parseInt(cartBadge.textContent) + 1;
+            
+            // Show toast notification
+            showToast(translations[currentLanguage].addedToCart, 'success');
+        }
+        
+        // Setup event listeners
+        function setupEventListeners() {
+            // Modal close
+            modalClose.addEventListener('click', closeModal);
+            
+            // Close modal when clicking outside
+            productModal.addEventListener('click', function(e) {
+                if (e.target === productModal) {
+                    closeModal();
+                }
+            });
+            
+            // Inquiry button
+            inquiryBtn.addEventListener('click', function() {
+                inquiryForm.style.display = inquiryForm.style.display === 'block' ? 'none' : 'block';
+            });
+            
+            // Product inquiry form submission
+            productInquiryForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const inquiryData = {
+                    productName: inquiryProductName.value,
+                    customerName: customerName.value,
+                    customerEmail: customerEmail.value,
+                    customerMobile: customerMobile.value,
+                    customerMessage: customerMessage.value,
+                    color: document.querySelector('.color-option.active').getAttribute('data-color'),
+                    size: document.querySelector('.size-option.active').getAttribute('data-size'),
+                    quantity: quantityInput.value
+                };
+                
+                // Send to Google Sheets (simulation)
+                sendToGoogleSheets(inquiryData);
+                
+                // Send to WhatsApp (simulation)
+                sendToWhatsApp(inquiryData);
+                
+                // Show success message
+                showToast(translations[currentLanguage].thankYouInquiry, 'success');
+                
+                // Reset form
+                productInquiryForm.reset();
+                inquiryForm.style.display = 'none';
+            });
+            
+            // Language selector
+            languageSelector.addEventListener('change', function() {
+                currentLanguage = this.value;
+                updateLanguage();
+            });
+            
+            // Currency selector
+            currencySelector.addEventListener('change', function() {
+                currentCurrency = this.value;
+                updateCurrency();
+            });
+            
+            // AI Assistant
+            aiBubble.addEventListener('click', function() {
+                aiChat.style.display = aiChat.style.display === 'flex' ? 'none' : 'flex';
+            });
+            
+            aiChatClose.addEventListener('click', function() {
+                aiChat.style.display = 'none';
+            });
+            
+            aiSendBtn.addEventListener('click', sendAIMessage);
+            aiInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    sendAIMessage();
+                }
+            });
+            
+            // Image search
+            imageSearchBtn.addEventListener('click', function() {
+                imageSearchInput.click();
+            });
+            
+            imageSearchInput.addEventListener('change', function(e) {
+                const file = e.target.files[0];
+                if (file) {
+                    showToast('Image search initiated. Finding similar products...', 'info');
+                    // Simulate image search
+                    setTimeout(() => {
+                        const randomProducts = [...products].sort(() => 0.5 - Math.random()).slice(0, 4);
+                        renderProducts(randomProducts);
+                        showToast('Found products similar to your image!', 'success');
+                    }, 2000);
+                }
+            });
+            
+            // Voice search
+            voiceSearchBtn.addEventListener('click', function() {
+                if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
+                    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+                    const recognition = new SpeechRecognition();
+                    
+                    recognition.continuous = false;
+                    recognition.interimResults = false;
+                    recognition.lang = currentLanguage === 'en' ? 'en-US' : 
+                                      currentLanguage === 'es' ? 'es-ES' :
+                                      currentLanguage === 'fr' ? 'fr-FR' :
+                                      currentLanguage === 'de' ? 'de-DE' :
+                                      currentLanguage === 'zh' ? 'zh-CN' :
+                                      currentLanguage === 'ar' ? 'ar-SA' : 'ur-PK';
+                    
+                    recognition.onstart = function() {
+                        voiceSearchBtn.innerHTML = '<i class="fas fa-microphone-slash"></i>';
+                        voiceSearchBtn.style.color = 'red';
+                    };
+                    
+                    recognition.onresult = function(event) {
+                        const transcript = event.results[0][0].transcript;
+                        searchInput.value = transcript;
+                        performSearch(transcript);
+                    };
+                    
+                    recognition.onerror = function(event) {
+                        console.error('Speech recognition error:', event.error);
+                        showToast('Voice search failed. Please try again.', 'error');
+                    };
+                    
+                    recognition.onend = function() {
+                        voiceSearchBtn.innerHTML = '<i class="fas fa-microphone"></i>';
+                        voiceSearchBtn.style.color = '#6c757d';
+                    };
+                    
+                    recognition.start();
+                } else {
+                    showToast('Voice search is not supported in your browser.', 'error');
+                }
+            });
+            
+            // Search input
+            searchInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    performSearch(this.value);
+                }
+            });
+            
+            // Quantity selector
+            decreaseQty.addEventListener('click', function() {
+                const currentValue = parseInt(quantityInput.value);
+                if (currentValue > 1) {
+                    quantityInput.value = currentValue - 1;
+                }
+            });
+            
+            increaseQty.addEventListener('click', function() {
+                const currentValue = parseInt(quantityInput.value);
+                quantityInput.value = currentValue + 1;
+            });
+            
+            // Color options
+            colorOptions.forEach(option => {
+                option.addEventListener('click', function() {
+                    colorOptions.forEach(opt => opt.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+            
+            // Size options
+            sizeOptions.forEach(option => {
+                option.addEventListener('click', function() {
+                    sizeOptions.forEach(opt => opt.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+        }
+        
+        // Close modal
+        function closeModal() {
+            productModal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+        
+        // Update language
+        function updateLanguage() {
+            searchInput.placeholder = translations[currentLanguage].searchPlaceholder;
+            document.querySelector('.hero-btn').textContent = translations[currentLanguage].shopNow;
+            
+            // Re-render products to update button text
+            renderProducts(currentCategory === 'all' ? products : products.filter(p => p.category === currentCategory));
+            
+            // Update AI welcome message
+            if (aiChatBody.children.length === 1) {
+                aiChatBody.children[0].textContent = translations[currentLanguage].aiWelcome;
+            }
+        }
+        
+        // Update currency
+        function updateCurrency() {
+            // Re-render products to update prices
+            renderProducts(currentCategory === 'all' ? products : products.filter(p => p.category === currentCategory));
+        }
+        
+        // Send to Google Sheets (simulation)
+        function sendToGoogleSheets(data) {
+            console.log('Sending to Google Sheets:', data);
+            // In a real implementation, you would use Google Sheets API
+            // This is just a simulation
+        }
+        
+        // Send to WhatsApp (simulation)
+        function sendToWhatsApp(data) {
+            const message = `
+                Product Inquiry:
+                Product: ${data.productName}
+                Name: ${data.customerName}
+                Email: ${data.customerEmail}
+                Mobile: ${data.customerMobile}
+                Message: ${data.customerMessage}
+                Color: ${data.color}
+                Size: ${data.size}
+                Quantity: ${data.quantity}
+            `;
+            
+            const whatsappUrl = `https://wa.me/923456414002?text=${encodeURIComponent(message)}`;
+            console.log('WhatsApp URL:', whatsappUrl);
+            
+            // In a real implementation, you might open this URL or use a WhatsApp API
+            // For demo purposes, we'll just log it
+        }
+        
+        // Perform search
+        function performSearch(query) {
+            if (!query.trim()) {
+                renderProducts(currentCategory === 'all' ? products : products.filter(p => p.category === currentCategory));
+                return;
+            }
+            
+            const baseProducts = currentCategory === 'all' ? products : products.filter(p => p.category === currentCategory);
+            const filteredProducts = baseProducts.filter(product => 
+                product.name.toLowerCase().includes(query.toLowerCase()) ||
+                product.category.toLowerCase().includes(query.toLowerCase()) ||
+                (product.description && product.description.toLowerCase().includes(query.toLowerCase()))
+            );
+            
+            renderProducts(filteredProducts);
+            
+            if (filteredProducts.length === 0) {
+                showToast('No products found matching your search.', 'info');
+            } else {
+                showToast(`Found ${filteredProducts.length} products matching your search.`, 'success');
+            }
+        }
+        
+        // Send AI message
+        function sendAIMessage() {
+            const message = aiInput.value.trim();
+            if (!message) return;
+            
+            // Add user message
+            const userMessage = document.createElement('div');
+            userMessage.className = 'ai-message user';
+            userMessage.textContent = message;
+            aiChatBody.appendChild(userMessage);
+            
+            // Clear input
+            aiInput.value = '';
+            
+            // Simulate AI response
+            setTimeout(() => {
+                const botMessage = document.createElement('div');
+                botMessage.className = 'ai-message bot';
+                
+                // Generate response based on keywords
+                let response = '';
+                const lowerMessage = message.toLowerCase();
+                
+                if (lowerMessage.includes('hello') || lowerMessage.includes('hi')) {
+                    response = 'Hello! How can I help you today? Are you looking for something specific?';
+                } else if (lowerMessage.includes('electronics')) {
+                    response = translations[currentLanguage].aiSuggestions.electronics;
+                } else if (lowerMessage.includes('fashion') || lowerMessage.includes('clothes')) {
+                    response = translations[currentLanguage].aiSuggestions.fashion;
+                } else if (lowerMessage.includes('home') || lowerMessage.includes('garden')) {
+                    response = translations[currentLanguage].aiSuggestions.home;
+                } else if (lowerMessage.includes('sports') || lowerMessage.includes('fitness')) {
+                    response = translations[currentLanguage].aiSuggestions.sports;
+                } else if (lowerMessage.includes('recommend') || lowerMessage.includes('suggest')) {
+                    const randomProduct = products[Math.floor(Math.random() * products.length)];
+                    response = `I recommend the ${randomProduct.name}. It's a great product with ${randomProduct.rating} star rating and ${randomProduct.reviews} reviews. Would you like to see more details?`;
+                } else {
+                    response = 'I understand you\'re looking for something. Could you be more specific about what you need? You can ask about electronics, fashion, home products, or sports equipment.';
+                }
+                
+                botMessage.textContent = response;
+                aiChatBody.appendChild(botMessage);
+                
+                // Scroll to bottom
+                aiChatBody.scrollTop = aiChatBody.scrollHeight;
+            }, 1000);
+            
+            // Scroll to bottom
+            aiChatBody.scrollTop = aiChatBody.scrollHeight;
+        }
+        
+        // Show toast notification
+        function showToast(message, type = 'info') {
+            const toastContainer = document.getElementById('toastContainer');
+            
+            const toast = document.createElement('div');
+            toast.className = `toast ${type}`;
+            
+            let icon = '';
+            if (type === 'success') {
+                icon = '<i class="fas fa-check-circle toast-icon"></i>';
+            } else if (type === 'error') {
+                icon = '<i class="fas fa-exclamation-circle toast-icon"></i>';
+            } else {
+                icon = '<i class="fas fa-info-circle toast-icon"></i>';
+            }
+            
+            toast.innerHTML = `
+                ${icon}
+                <div class="toast-message">${message}</div>
+                <button class="toast-close">
+                    <i class="fas fa-times"></i>
+                </button>
+            `;
+            
+            toastContainer.appendChild(toast);
+            
+            // Add close functionality
+            toast.querySelector('.toast-close').addEventListener('click', function() {
+                toast.remove();
+            });
+            
+            // Auto remove after 5 seconds
+            setTimeout(() => {
+                toast.style.animation = 'slideIn 0.3s ease reverse';
+                setTimeout(() => {
+                    toast.remove();
+                }, 300);
+            }, 5000);
+        }
+        
+        // Initialize the app when DOM is loaded
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+</html>
